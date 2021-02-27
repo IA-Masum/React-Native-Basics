@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, SafeAreaView } from 'react-native';
+import {StatusBar} from 'expo-status-bar';
+import React, {useState} from 'react';
+import {TextInput, Text, View} from 'react-native';
 
 export default function App() {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text>Hello React Native</Text>
-    </SafeAreaView>
-  );
+
+    const [text, setText] = useState("");
+    return (
+        <View style={{paddingTop: 100, paddingLeft: 20}}>
+            <TextInput
+                style={{height: 40}}
+                placeholder="Type Here To Translate"
+                onChangeText={text => setText(text)}
+                defaultText={text}
+            />
+
+            <Text
+                style={{padding: 40, fontSize: 40}}
+            >
+                {text.split(" ").map(word => word && '🍕').join(" ")}
+            </Text>
+        </View>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         backgroundColor: '#fff',
+//         flexDirection: "row",
+//         height: 100,
+//         padding: 20
+//     },
+// });
